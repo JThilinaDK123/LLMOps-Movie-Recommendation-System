@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: llmops-container
-        image: llmops-movie-app:latest  # Use local image
+        image: llmops-movies-app:latest  # Use local image
         imagePullPolicy: IfNotPresent
         ports:
           - containerPort: 8501

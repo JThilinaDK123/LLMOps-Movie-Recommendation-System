@@ -1,5 +1,5 @@
-langchain
-langchain-community
+# langchain
+# langchain-community
 langchain_groq
 # chromadb>=0.5.4
 # hnswlib>=0.8.0
@@ -12,3 +12,6 @@ sentence-transformers
 langchain_huggingface
 # transformers==4.43.4 
 # sentence-transformers==3.0.1
+langchain>=0.1.16
+langchain-community>=0.0.12
+langchain-core>=0.1.12
