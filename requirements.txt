@@ -1,8 +1,6 @@
-# langchain
-# langchain-community
+langchain
+langchain-community
 langchain_groq
-# chromadb>=0.5.4
-# hnswlib>=0.8.0
 chromadb
 hnswlib
 streamlit
