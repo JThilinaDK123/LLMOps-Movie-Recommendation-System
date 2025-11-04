@@ -14,6 +14,9 @@ RUN apt-get update && apt-get install -y \
     curl \
     && rm -rf /var/lib/apt/lists/*
 
+RUN pip install -r requirements.txt
+RUN pip install langchain==0.1.19
+
 ## Copying ur all contents from local to app
 COPY . .
 
