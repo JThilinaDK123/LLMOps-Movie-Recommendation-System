@@ -1,0 +1,14 @@
+langchain
+langchain-community
+langchain_groq
+# chromadb>=0.5.4
+# hnswlib>=0.8.0
+chromadb
+hnswlib
+streamlit
+pandas
+python-dotenv
+sentence-transformers
+langchain_huggingface
+# transformers==4.43.4 
+# sentence-transformers==3.0.1

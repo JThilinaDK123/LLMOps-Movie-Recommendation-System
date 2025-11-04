@@ -1,0 +1,6 @@
+.env
+Workflow.docx
+~$rkflow.docx
+venv/
+logs/
+Movie_Recommendation_System.egg-info
