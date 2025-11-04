@@ -1,4 +1,3 @@
-# langchain
 langchain==0.1.19
 langchain-community
 langchain_groq
