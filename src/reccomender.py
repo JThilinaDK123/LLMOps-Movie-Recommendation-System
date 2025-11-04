@@ -55,16 +55,14 @@ class MovieRecommender:
         # Step 1: Retrieve relevant docs
         # docs = self.retriever.get_relevant_documents(query)
         try:
-            docs = self.retriever.get_relevant_documents(query)
+            # docs = self.retriever.get_relevant_documents(query)
+            docs = self.retriever.invoke(query)
         except Exception:
-            docs = self.retriever.get_relevant_documents({"question": query})
+            # docs = self.retriever.get_relevant_documents({"question": query})
+            docs = self.retriever.invoke({"question": query})
 
         context = "\n".join([d.page_content for d in docs])
-
         prompt = self.prompt_template.format(context=context, question=query)
-
-
-        # Step 3: Call LLM directly
         response = self.llm.invoke(prompt)
         return response.content
 
