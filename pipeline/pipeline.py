@@ -1,40 +1,77 @@
+# from src.vectore_store import VectorStoreBuilder
+# from src.reccomender import MovieRecommender
+# from config.config import GROQ_API_KEY,MODEL_NAME
+# from utils.logger import get_logger
+# from utils.custom_exception import CustomException
+
+# logger = get_logger(__name__)
+
+# class MovieRecommendationPipeline:
+#     def __init__(self, persist_dir="chroma_db"):
+#         try:
+#             logger.info("Intializing Recommdation Pipeline")
+
+#             vector_builder = VectorStoreBuilder(csv_path="" , persist_dir=persist_dir)
+
+#             retriever = vector_builder.load_vector_store().as_retriever()
+
+#             self.recommender = MovieRecommender(retriever, GROQ_API_KEY, MODEL_NAME)
+
+#             logger.info("Pipleine intialized sucesfully...")
+
+#         except Exception as e:
+#             logger.error(f"Failed to intialize pipeline {str(e)}")
+#             raise CustomException("Error during pipeline intialization" , e)
+        
+#     def recommend(self,query:str) -> str:
+#         try:
+#             logger.info(f"Recived a query {query}")
+
+#             recommendation = self.recommender.get_recommendation(query)
+
+#             logger.info("Recommendation generated sucesfulyy...")
+#             return recommendation
+#         except Exception as e:
+#             logger.error(f"Failed to get recommendation {str(e)}")
+#             raise CustomException("Error during getting recommendation" , e)
+        
+
+
 from src.vectore_store import VectorStoreBuilder
-from src.reccomender import MovieRecommender
-from config.config import GROQ_API_KEY,MODEL_NAME
+from src.reccomender import MovieRecommender 
+from config.config import GROQ_API_KEY, MODEL_NAME
 from utils.logger import get_logger
 from utils.custom_exception import CustomException
 
 logger = get_logger(__name__)
 
 class MovieRecommendationPipeline:
-    def __init__(self, persist_dir="chroma_db"):
+    def __init__(self, persist_dir: str = "chroma_db"):
         try:
-            logger.info("Intializing Recommdation Pipeline")
+            logger.info("Initializing Movie Recommendation Pipeline...")
 
-            vector_builder = VectorStoreBuilder(csv_path="" , persist_dir=persist_dir)
-
+            # ✅ Build or load vector store
+            vector_builder = VectorStoreBuilder(csv_path="", persist_dir=persist_dir)
             retriever = vector_builder.load_vector_store().as_retriever()
 
+            # ✅ Initialize recommender (manual LLM + retriever)
             self.recommender = MovieRecommender(retriever, GROQ_API_KEY, MODEL_NAME)
 
-            logger.info("Pipleine intialized sucesfully...")
+            logger.info("Pipeline initialized successfully ✅")
 
         except Exception as e:
-            logger.error(f"Failed to intialize pipeline {str(e)}")
-            raise CustomException("Error during pipeline intialization" , e)
+            logger.error(f"Failed to initialize pipeline: {str(e)}")
+            raise CustomException("Error during pipeline initialization", e)
         
-    def recommend(self,query:str) -> str:
+    def recommend(self, query: str) -> str:
         try:
-            logger.info(f"Recived a query {query}")
+            logger.info(f"Received query: {query}")
 
             recommendation = self.recommender.get_recommendation(query)
 
-            logger.info("Recommendation generated sucesfulyy...")
+            logger.info("Recommendation generated successfully ✅")
             return recommendation
+
         except Exception as e:
-            logger.error(f"Failed to get recommendation {str(e)}")
-            raise CustomException("Error during getting recommendation" , e)
-        
-
-
-        
+            logger.error(f"Failed to generate recommendation: {str(e)}")
+            raise CustomException("Error during recommendation generation", e)
